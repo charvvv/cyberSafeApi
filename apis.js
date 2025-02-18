@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-require('dotenv').config()
+require('dotenv').config() 
+// hello
 const url = process.env.url
 console.log(url)
 const port = process.env.port
