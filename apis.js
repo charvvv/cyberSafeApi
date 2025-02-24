@@ -60,6 +60,5 @@ app.delete('/delete/:_id', async(req, res)=>{
     res.send(result)
 })
 
-app.listen(port, ()=>{
-    console.log('app worked on corrected port')
-})
+module.exports = app;
+
