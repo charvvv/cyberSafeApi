@@ -25,40 +25,14 @@ app.use(express.json())
 app.use(cors())
 
 
-app.post('/upload', async(req, res)=>{
-    let data = cyberModel(req.body) 
-    let result = await data.save()
-    res.send(result)
-})
-
-
-
-
-
-app.get('/get', async(req, res)=>{
-    let data = await cyberModel.find()
-    res.send(data)
-})
-
-
-
-
-
-app.put('/update/:_id', async (req, res) => {
-
-    let result = await cyberModel.updateOne(req.params,{$set: req.body});
-    res.send(result);
-})
-
-
-
-
-
-app.delete('/delete/:_id', async(req, res)=>{
-    console.log(req.params) 
-    let result = await cyberModel.deleteOne(req.params)
-    res.send(result)
-})
-
+app.post("/api/upload", async (req, res) => { let data = cyberModel(req.body); 
+let result = await data.save();
+res.send(result); }); 
+app.get("/api/get", async (req, res) => { let data = await cyberModel.find(); 
+res.send(data); }); 
+app.put("/api/update/:_id", async (req, res) => { let result = await cyberModel.updateOne(req.params, { $set: req.body }); 
+res.send(result); }); app.delete("/api/delete/:_id", async (req, res) => { console.log(req.params); 
+let result = await cyberModel.deleteOne(req.params); 
+res.send(result); });
 module.exports = app;
 
