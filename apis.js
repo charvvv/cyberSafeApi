@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
-require('dotenv').config() 
-// hello from saanvi
+require('dotenv').config()
 const url = process.env.url
 console.log(url)
 const port = process.env.port
-mongoose.connect(url) .then(() => console.log("Connected to MongoDB")) .catch(err => console.error("Failed to connect to MongoDB:", err));
+mongoose.connect(url) .then(() => console.log("Connected to MongoDB", url)) .catch(err => console.error("Failed to connect to MongoDB:", err));
 
 const schema = mongoose.Schema({
     topic: String,
@@ -15,7 +14,7 @@ const schema = mongoose.Schema({
 
 })
 
-const cyberModel = mongoose.model('blogData', schema)
+const cyberModel = mongoose.model('blogdatas', schema)
 
 const express = require('express')
 const cors = require('cors')
@@ -34,5 +33,7 @@ app.put("/api/update/:_id", async (req, res) => { let result = await cyberModel.
 res.send(result); }); app.delete("/api/delete/:_id", async (req, res) => { console.log(req.params); 
 let result = await cyberModel.deleteOne(req.params); 
 res.send(result); });
-module.exports = app;
+
+
+app.listen(port, ()=>{console.log('app is running on port 5000')})
 
