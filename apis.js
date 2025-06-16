@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
-const url = process.env.url
+const url = "mongodb+srv://charvig:Xx0Wjo6nAGDfw8dp@cyberdata.dhzkj.mongodb.net/"
 console.log(url)
-const port = process.env.port
+const port = 5000
 mongoose.connect(url) .then(() => console.log("Connected to MongoDB", url)) .catch(err => console.error("Failed to connect to MongoDB:", err));
 
 const schema = mongoose.Schema({
